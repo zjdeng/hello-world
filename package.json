@@ -1,16 +1,32 @@
 {
   "name": "hello-world",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --profile --hot",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zjdeng/hello-world.git"
+  },
+  "author": "dzj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zjdeng/hello-world/issues"
+  },
+  "homepage": "https://github.com/zjdeng/hello-world#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+  "dependencies": {},
+  "description": ""
 }
