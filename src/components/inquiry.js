@@ -2,6 +2,7 @@
  * Created by dzj12 on 2017/11/24.
  */
 import React from 'react'
+import { render } from 'react-dom'
 
 class Inquiry extends React.Component {
   render() {

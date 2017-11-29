@@ -1,17 +1,18 @@
 import React from 'react'
-import ReactDom from 'react-dom'
+import ReactDom, {render} from 'react-dom'
+import { BrowserRouter, Route, Link } from 'react-router-dom'
 
 // 引入公共样式
 // import './main.css'
 
 // 引入React-Router模块
-import { Router, Route, Link, hashHistory, IndexRoute, Redirect, IndexLink} from 'react-router'
+// import { Router, Link, hashHistory, IndexRoute, Redirect, IndexLink} from 'react-router'
 
 // 引入组建
-import Logo from './components/logo'
+// import Logo from './components/logo'
 import inquiry from './components/Inquiry'
 import healthCheck from './components/HealthCheck'
-
+// <Logo />
 
 function nametest(user) {
   return user.names + ' ' + user.pwd;
@@ -25,14 +26,13 @@ class virBg extends React.Component {
   render() {
     return (
       <div>
-        <Logo />
         <h1>
           hi, {nametest(user)}!
         </h1>
-        <Link to="/inquiry">表格</Link>
-        <Link to="/healthCheck">表格</Link>
-        <div >
-          {this.props.children}
+        <Link to="/inquiry">问诊</Link>
+        <Link to="/healthCheck">体检</Link>
+        <div>
+          {this.props.component}
         </div>
       </div>
     )
@@ -46,15 +46,15 @@ const element = (
         hi, {nametest(user)}!
     </h1>
   </div>*/
-  <Router history={hashHistory}>
+  <BrowserRouter>
     <Route path="/" component={virBg}>
-      <Route path="/inquiry" component={inquiry} />
-      <Route path="/healthCheck" component={healthCheck} />
+      <Route path="inquiry" component={inquiry} />
+      <Route path="healthCheck" component={healthCheck} />
     </Route>
-  </Router>
+  </BrowserRouter>
 )
 
-ReactDom.render(
+render(
   element,
   document.getElementById('content')
 );
