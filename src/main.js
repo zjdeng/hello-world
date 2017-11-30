@@ -1,18 +1,14 @@
-import React from 'react'
-import ReactDom, {render} from 'react-dom'
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import React,{ Component } from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter, BrowserRouter, Router, Route, Link, Switch } from 'react-router-dom'
+
+// 引入组建
+import Logo from './components/logo'
+import inquiry from './components/Inquiry'
+import healthCheck from './components/HealthCheck'
 
 // 引入公共样式
 // import './main.css'
-
-// 引入React-Router模块
-// import { Router, Link, hashHistory, IndexRoute, Redirect, IndexLink} from 'react-router'
-
-// 引入组建
-// import Logo from './components/logo'
-import inquiry from './components/Inquiry'
-import healthCheck from './components/HealthCheck'
-// <Logo />
 
 function nametest(user) {
   return user.names + ' ' + user.pwd;
@@ -22,17 +18,20 @@ const user = {
   pwd: '333222'
 }
 
-class virBg extends React.Component {
+class VirBg extends React.Component {
   render() {
     return (
       <div>
         <h1>
           hi, {nametest(user)}!
         </h1>
-        <Link to="/inquiry">问诊</Link>
-        <Link to="/healthCheck">体检</Link>
+        <ul>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/inquiry">问诊</Link></li>
+          <li><Link to="/healthCheck">体检</Link></li>
+        </ul>
         <div>
-          {this.props.component}
+          {this.props.children}
         </div>
       </div>
     )
@@ -40,21 +39,16 @@ class virBg extends React.Component {
 }
 
 const element = (
-  /*<div>
-    <Logo />
-    <h1>
-        hi, {nametest(user)}!
-    </h1>
-  </div>*/
-  <BrowserRouter>
-    <Route path="/" component={virBg}>
-      <Route path="inquiry" component={inquiry} />
-      <Route path="healthCheck" component={healthCheck} />
-    </Route>
-  </BrowserRouter>
+  <HashRouter>
+    <VirBg>
+      <Route exact path="/" component={Logo} />
+      <Route path="/inquiry" component={inquiry} />
+      <Route path="/healthCheck" component={healthCheck} />
+    </VirBg>
+  </HashRouter>
 )
 
-render(
+ReactDOM.render(
   element,
   document.getElementById('content')
 );
